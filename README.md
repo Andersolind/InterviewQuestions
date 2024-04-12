@@ -19,8 +19,9 @@ The event loop continues this process, ensuring that the call stack is always em
 Example: In this example, a JavaScript script demonstrates synchronous blocking behavior. It starts by logging “Before delay,” then uses a function delayBySeconds to create a delay of 5 seconds using a busy-wait loop. The script then logs “After delay” after the 5-second delay completes.
 ```
 
-## Obsrevables vs Promises
+## Observables vs Promises
 
-```Promises are suitable for single asynchronous operations like fetching data from an API. Observables are ideal for handling streams of data, such as user input, WebSocket events, or HTTP responses, where multiple values might be emitted over time.
+```
+Promises are suitable for single asynchronous operations like fetching data from an API. Observables are ideal for handling streams of data, such as user input, WebSocket events, or HTTP responses, where multiple values might be emitted over time.
 ```
 
