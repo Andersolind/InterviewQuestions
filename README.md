@@ -22,6 +22,8 @@ Example: In this example, a JavaScript script demonstrates synchronous blocking 
 ## Observables vs Promises
 
 ```
-Promises are suitable for single asynchronous operations like fetching data from an API. Observables are ideal for handling streams of data, such as user input, WebSocket events, or HTTP responses, where multiple values might be emitted over time.
+Promises are suitable for single asynchronous operations like fetching data from an API.
+Observables are ideal for handling streams of data, such as user input, WebSocket events, or HTTP responses,
+where multiple values might be emitted over time.
 ```
 
