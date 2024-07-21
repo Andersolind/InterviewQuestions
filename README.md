@@ -198,7 +198,7 @@ function readLine() {
 
 function plusMinus(arr) {
     // Write your code here
- let positive = arr.filter(number => number > 0).length / arr.length;
+    let positive = arr.filter(number => number > 0).length / arr.length;
     let negative = arr.filter(number => number < 0).length / arr.length;;
     let zeronums = arr.filter(number => number == 0).length / arr.length;;
     return console.log(positive.toFixed(6) + '\n' + negative.toFixed(6) + '\n' + zeronums.toFixed(6))
@@ -256,4 +256,166 @@ function main() {
     miniMaxSum(arr);
 }
 
+```
+```
+type script
+
+'use strict';
+
+process.stdin.resume();
+process.stdin.setEncoding('utf-8');
+
+let inputString: string = '';
+let inputLines: string[] = [];
+let currentLine: number = 0;
+
+process.stdin.on('data', function(inputStdin: string): void {
+    inputString += inputStdin;
+});
+
+process.stdin.on('end', function(): void {
+    inputLines = inputString.split('\n');
+    inputString = '';
+
+    main();
+});
+
+function readLine(): string {
+    return inputLines[currentLine++];
+}
+
+/*
+ * Complete the 'plusMinus' function below.
+ *
+ * The function accepts INTEGER_ARRAY arr as parameter.
+ */
+
+function plusMinus(arr: number[]): void {
+    // Write your code here
+ var n = arr.length; 
+    //console.log(n)
+    //console.log(arr)
+    var numberOfPositiveValue = 0
+    var numberOfNegativeValue = 0
+    var numberOfZeroValue = 0
+
+    for (var i = 0; i < n; i++) {
+        if (arr[i] > 0) {
+            numberOfPositiveValue = numberOfPositiveValue + 1
+        }
+        if (arr[i] < 0) {
+            numberOfNegativeValue = numberOfNegativeValue + 1
+        }
+        if (arr[i] === 0) {
+            numberOfZeroValue = numberOfZeroValue + 1
+        }
+    }
+
+    var numberOfPositiveValueAfterMultipleN = numberOfPositiveValue / n
+    var numberOfNegativeValueAfterMultipleN = numberOfNegativeValue / n
+    var numberOfZeroValueAfterMultipleN = numberOfZeroValue / n
+
+    console.log(numberOfPositiveValueAfterMultipleN.toFixed(6))
+    console.log(numberOfNegativeValueAfterMultipleN.toFixed(6))
+    console.log(numberOfZeroValueAfterMultipleN.toFixed(6))
+
+}
+
+function main() {
+    const n: number = parseInt(readLine().trim(), 10);
+
+    const arr: number[] = readLine().replace(/\s+$/g, '').split(' ').map(arrTemp => parseInt(arrTemp, 10));
+
+    plusMinus(arr);
+}
+```
+##  undirected graph graph
+
+```
+class Vertex<T> {
+    value: T;
+    constructor(value: T) {
+        this.value = value;
+    }
+}
+
+class Edge<T> {
+    start: Vertex<T>;
+    end: Vertex<T>;
+    weight: number; // If the graph is weighted
+
+    constructor(start: Vertex<T>, end: Vertex<T>, weight: number = 1) {
+        this.start = start;
+        this.end = end;
+        this.weight = weight;
+    }
+}
+
+class Graph<T> {
+    vertices: Vertex<T>[];
+    edges: Edge<T>[];
+
+    constructor() {
+        this.vertices = [];
+        this.edges = [];
+    }
+
+    addVertex(value: T): Vertex<T> {
+        const vertex = new Vertex(value);
+        this.vertices.push(vertex);
+        return vertex;
+    }
+
+    addEdge(vertex1: Vertex<T>, vertex2: Vertex<T>, weight: number = 1) {
+        const edge = new Edge(vertex1, vertex2, weight);
+        this.edges.push(edge);
+        // For an undirected graph, we add edges in both directions
+        const reverseEdge = new Edge(vertex2, vertex1, weight);
+        this.edges.push(reverseEdge);
+    }
+
+    getNeighbors(vertex: Vertex<T>): Vertex<T>[] {
+        const neighbors: Vertex<T>[] = [];
+        this.edges.forEach(edge => {
+            if (edge.start === vertex) {
+                neighbors.push(edge.end);
+            }
+        });
+        return neighbors;
+    }
+
+    printGraph(): void {
+        console.log("Vertices:");
+        this.vertices.forEach(vertex => {
+            console.log(vertex.value);
+        });
+
+        console.log("Edges:");
+        this.edges.forEach(edge => {
+            console.log(`${edge.start.value} <-> ${edge.end.value} (Weight: ${edge.weight})`);
+        });
+    }
+}
+
+// Example usage:
+
+// Create a graph
+const graph = new Graph<number>();
+
+// Add vertices
+const vertex1 = graph.addVertex(1);
+const vertex2 = graph.addVertex(2);
+const vertex3 = graph.addVertex(3);
+
+// Add edges
+graph.addEdge(vertex1, vertex2);
+graph.addEdge(vertex2, vertex3);
+graph.addEdge(vertex3, vertex1);
+
+// Print the graph
+graph.printGraph();
+
+// Get neighbors of a vertex
+const neighborsOfVertex1 = graph.getNeighbors(vertex1);
+console.log(`Neighbors of vertex 1: ${neighborsOfVertex1.map(v => v.value).join(', ')}`);
 ```
